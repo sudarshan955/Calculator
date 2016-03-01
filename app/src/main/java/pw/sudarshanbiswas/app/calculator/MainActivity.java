@@ -1,5 +1,6 @@
 package pw.sudarshanbiswas.app.calculator;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -8,8 +9,18 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.EditText;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+
+    EditText studentIdEditText, firstNameEditText, lastNameEditText;
+    String studentIdStr, firstNameStr, lastNameStr;
+    Button addStudentButton, viewAllStudentButton;
+    Student student;
+    ArrayList<Student> studentList = new ArrayList<Student>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,12 +29,48 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+            }
+        });*/
+
+        addStudentButton = (Button) findViewById(R.id.addStudentButton);
+        viewAllStudentButton = (Button) findViewById(R.id.viewAllStudentButton);
+
+        studentIdEditText = (EditText) findViewById(R.id.studentIdEditText);
+        firstNameEditText = (EditText) findViewById(R.id.firstNameEditText);
+        lastNameEditText = (EditText) findViewById(R.id.lastNameEditText);
+
+        addStudentButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                studentIdStr = studentIdEditText.getText().toString();
+                firstNameStr = firstNameEditText.getText().toString();
+                lastNameStr = lastNameEditText.getText().toString();
+                student = new Student();
+                student.addStudent(studentIdStr, firstNameStr, lastNameStr);
+                studentList.add(student);
+
+                //Clear all text field
+                studentIdEditText.setText("");
+                firstNameEditText.setText("");
+                lastNameEditText.setText("");
+            }
+        });
+
+
+        viewAllStudentButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle homeBundle = new Bundle();
+                homeBundle.putSerializable("allStudentList", studentList);
+                Intent homeIntent = new Intent(MainActivity.this, ViewAllStudentActivity.class);
+                homeIntent.putExtras(homeBundle);
+                startActivity(homeIntent);
             }
         });
     }

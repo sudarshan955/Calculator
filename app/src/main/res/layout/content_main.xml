@@ -7,11 +7,45 @@
     android:padding="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="pw.sudarshanbiswas.app.calculator.MainActivity"
+    android:orientation="vertical"
     tools:showIn="@layout/activity_main">
 
     <EditText
-        android:id="@+id/firstNameEditText"
+        android:id="@+id/studentIdEditText"
+        android:hint="@string/student_id_hint_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/firstNameEditText"
+        android:hint="@string/first_name_hint_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/lastNameEditText"
+        android:hint="@string/last_name_hint_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/addStudentButton"
+            android:text="@string/add_student_button_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/viewAllStudentButton"
+            android:text="@string/view_all_student_button_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
 
 </LinearLayout>
