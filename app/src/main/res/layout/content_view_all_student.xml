@@ -13,16 +13,14 @@
     android:orientation="vertical"
     tools:showIn="@layout/activity_view_all_student">
 
-    <TextView
-        android:id="@+id/allStudentListTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
     <Button
         android:id="@+id/homeButton"
         android:text="@string/home_button_text"
         android:layout_gravity="center_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
+    <include layout="@layout/content_view_all_student_list_view" />
+
 
 </LinearLayout>

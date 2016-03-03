@@ -19,7 +19,7 @@
         </activity>
         <activity
             android:name=".ViewAllStudentActivity"
-            android:label="@string/title_activity_view_all_student"
+            android:label="@string/view_all_student_list_title"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
     </application>
